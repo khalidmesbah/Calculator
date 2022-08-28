@@ -1,9 +1,8 @@
 class Calculator {
-    constructor(previousOperandEl, currentOperandEl) {
-        this.previousOperandEl = previousOperandEl;
-        this.currentOperandEl = currentOperandEl;
+    constructor(_previousOperandEl, _currentOperandEl) {
+        this.previousOperandEl = _previousOperandEl;
+        this.currentOperandEl = _currentOperandEl;
         this.clear();
-
     }
     clear() {
         this.previousOperand = ``;
@@ -76,8 +75,6 @@ class Calculator {
     }
 }
 
-
-
 const numbersBtns = [...document.querySelectorAll(`[data-number]`)];
 const operationsBtns = [...document.querySelectorAll(`[data-operation]`)];
 const clearAllBtn = document.querySelector(`[data-clear-all]`);
@@ -86,8 +83,6 @@ const equalsBtn = document.getElementById(`equal`);
 const output = document.getElementById(`output`);
 const previousOperandEl = document.getElementById(`previous-operand`);
 const currentOperandEl = document.getElementById(`current-operand`);
-
-
 const calculator = new Calculator(previousOperandEl, currentOperandEl);
 
 numbersBtns.forEach(number => {
@@ -96,14 +91,12 @@ numbersBtns.forEach(number => {
         calculator.updateDisplay();
     });
 });
-
 operationsBtns.forEach(operation => {
     operation.addEventListener(`click`, () => {
         calculator.chooseOperation(operation.textContent);
         calculator.updateDisplay();
     });
 });
-
 equalsBtn.addEventListener(`click`, () => {
     calculator.compute();
     calculator.updateDisplay();
